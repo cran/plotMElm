@@ -4,7 +4,7 @@ plotMElm
 A simple R package to plot marginal effects from interactions estimated
 from linear models.
 
-[![Build Status](https://travis-ci.org/christophergandrud/plotMElm.svg?branch=master)](https://travis-ci.org/christophergandrud/plotMElm)
+[![Build Status](https://travis-ci.org/christophergandrud/plotMElm.png)](https://travis-ci.org/christophergandrud/plotMElm) [![CRAN Version](http://www.r-pkg.org/badges/version/plotMElm)](http://cran.r-project.org/package=plotMElm) ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/last-month/plotMElm) ![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/plotMElm)
 
 # Examples
 
@@ -29,12 +29,17 @@ plot_me(m1, 'Income', 'Population')
 
 ![plot of chunk murder-me-example](figure/murder-me-example-1.png)
 
-## Categorical Term 2 
+## Categorical (Factor) Term 2
 
-When the second term in the interaction is categorical (detected by having 5 or fewer categories) then point-ranges are plotted:
+When the second term in the interaction is a categorical (factor) variable then point-ranges are plotted. Note that the marginal effect is in terms of the 
+reference category:
 
 
 ```r
+# Set Term 2 as a factor variable
+mtcars$cyl <- factor(mtcars$cyl, 
+                     labels = c('4 Cyl', '6 Cyl', '8 Cyl'))
+
 # Estimate model
 m2 <- lm(mpg ~ wt * cyl, data = mtcars)
 
@@ -43,6 +48,8 @@ plot_me(m2, 'wt', 'cyl')
 ```
 
 ![plot of chunk cars-example](figure/cars-example-1.png)
+
+Note that point ranges will also be used if there are five or fewer fitted values.
 
 ## See also 
 
