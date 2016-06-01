@@ -4,7 +4,12 @@ plotMElm
 A simple R package to plot marginal effects from interactions estimated
 from linear models.
 
-[![Build Status](https://travis-ci.org/christophergandrud/plotMElm.png)](https://travis-ci.org/christophergandrud/plotMElm) [![CRAN Version](http://www.r-pkg.org/badges/version/plotMElm)](http://cran.r-project.org/package=plotMElm) ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/last-month/plotMElm) ![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/plotMElm)
+[![Build Status](https://travis-ci.org/christophergandrud/plotMElm.png)](https://travis-ci.org/christophergandrud/plotMElm) [![CRAN Version](http://www.r-pkg.org/badges/version/plotMElm)](http://cran.r-project.org/package=plotMElm) 
+
+<!----
+![CRAN Downloads](http://cranlogs.r-pkg.org/badges/last-month/plotMElm) ![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/plotMElm)
+--->
+
 
 # Examples
 
@@ -51,7 +56,39 @@ plot_me(m2, 'wt', 'cyl')
 
 Note that point ranges will also be used if there are five or fewer fitted values.
 
+## Determining the False Positive Rate
+
+[Esarey and Sumner](http://jee3.web.rice.edu/interaction-overconfidence.pdf) 
+show that pointwise confidence intervals from marginal effect plots produce 
+statistically significant findings at a rate that can be larger or smaller 
+than is warrented. `plot_me` allows users to specify `ci_type = 'fdr'` to find
+confidence intervals that correct for overly confident marginal effects in the 
+face of multiple comparisons. FDR stands for "False Discovery Rate". For example:
+
+
+```r
+# Plot marginal effect of Income across the observed range of Population
+# with false discovery rate limited confidence intervals
+plot_me(m1, 'Income', 'Population', ci_type = 'fdr')
+```
+
+Here is the result compared with standard confidence intervals:
+
+
+```
+## t-statistic used: 2.269
+```
+
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+
+You can also use the `t_statistic` argument to supply custom t-statistics
+for creating the marginal effect confidence intervals. This is useful if you 
+want to use a funciton like `findMultiLims` from the 
+[interactTest](https://cran.r-project.org/package=interactionTest) to find t-statistics 
+that can be used to correct confidence intervals for underconfidence.
+
 ## See also 
 
-The [interplot](https://cran.r-project.org/package=interplot) package also has many of the same capabilities as *plotMElm*.
+The [interplot](https://cran.r-project.org/package=interplot) package also has 
+some of the same capabilities as **plotMElm**.
 
