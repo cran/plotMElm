@@ -3,8 +3,8 @@ Type: Package
 Title: Plot Marginal Effects from Linear Models
 Description: Plot marginal effects for interactions estimated
     from linear models.
-Version: 0.1.4
-Date: 2016-05-19
+Version: 0.1.5
+Date: 2018-05-28
 Authors@R: c(
     person("Christopher", "Gandrud", email = "christopher.gandrud@gmail.com",
     role = c("aut", "cre"))
@@ -13,10 +13,10 @@ BugReports: https://github.com/christophergandrud/plotMElm/issues
 License: GPL (>= 3)
 Imports: ggplot2, interactionTest
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2016-06-01 15:13:30 UTC; christophergandrud
+Packaged: 2018-05-28 14:49:39 UTC; christophergandrud
 Author: Christopher Gandrud [aut, cre]
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>
 Repository: CRAN
-Date/Publication: 2016-06-01 18:34:01
+Date/Publication: 2018-05-28 19:09:38 UTC
